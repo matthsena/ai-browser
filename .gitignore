@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyw
+*.pyz
+
+.vscode/
+
+.venv/
+
+.env
+
+.env.local
+
+*.png
