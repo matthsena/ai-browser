@@ -228,13 +228,13 @@ async function highlightInteractiveElements() {
                             element.setAttribute('data-interactive-id', `#${counter}`);
                             element.setAttribute('data-element-type', elementTypeInfo.category);
                             
-                            const label = doc.createElement('span');
-                            label.textContent = `#${counter}`;
-                            label.classList.add('interactive-label');
-                            label.setAttribute('data-element-type', elementTypeInfo.category);
+                            // const label = doc.createElement('span');
+                            // label.textContent = `#${counter}`;
+                            // label.classList.add('interactive-label');
+                            // label.setAttribute('data-element-type', elementTypeInfo.category);
 
-                            element.style.position = element.style.position || 'relative';
-                            element.appendChild(label);
+                            // element.style.position = element.style.position || 'relative';
+                            // element.appendChild(label);
                              
                             const elementContent = getElementContent(element);
                             const rect = element.getBoundingClientRect();
@@ -359,20 +359,13 @@ async function highlightInteractiveElements() {
         console.log("highlightInteractiveElements function completed successfully");
         
         return {
-            mainContent: document.documentElement.outerHTML,
-            iframeInfos: iframeInfos,
             interactiveElements: interactiveElementsInfo,
-            forms: formsInfo
         };
     } catch (mainError) {
         console.error("Critical error in highlightInteractiveElements:", mainError);
         console.error("Error stack:", mainError.stack);
         return {
-            error: mainError.toString(),
-            mainContent: document.documentElement.outerHTML,
-            iframeInfos: [],
             interactiveElements: [],
-            forms: []
         };
     }
 }
