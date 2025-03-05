@@ -5,25 +5,25 @@ Contains functions for setting up browser contexts with security and permission 
 
 async def create_browser_context(browser):
     """
-    Configura o contexto do navegador para desabilitar todas as permissões.
+    Configures the browser context to disable all permissions.
     
     Args:
-        browser: Instância do browser Playwright
+        browser: Playwright browser instance
         
     Returns:
-        Um objeto de contexto Playwright configurado
+        A configured Playwright context object
     """
-    # Configura o contexto do navegador para desabilitar todas as permissões
+    # Configure the browser context to disable all permissions
     context = await browser.new_context(
-        permissions=[],  # Lista vazia significa que nenhuma permissão será concedida
+        permissions=[],  # Empty list means no permissions will be granted
         geolocation=None,
-        ignore_https_errors=True,   # Ignora erros HTTPS para facilitar navegação
-        # Configurações adicionais para bloquear outros tipos de permissões
-        java_script_enabled=True,   # Mantém JavaScript habilitado
-        bypass_csp=True             # Ignora políticas de segurança de conteúdo que poderiam restringir o script
+        ignore_https_errors=True,   # Ignore HTTPS errors to facilitate navigation
+        # Additional settings to block other types of permissions
+        java_script_enabled=True,   # Keep JavaScript enabled
+        bypass_csp=True             # Ignore content security policies that could restrict the script
     )
     
-    # Gerencia permissões específicas: nega tudo
+    # Manage specific permissions: deny everything
     permissions_to_deny = [
         'geolocation',
         'microphone',
@@ -42,13 +42,13 @@ async def create_browser_context(browser):
         'midi-sysex'
     ]
     
-    # Define todas as permissões explicitamente como negadas para todos os sites
+    # Explicitly set all permissions as denied for all sites
     for permission in permissions_to_deny:
         await context.route('**/*', lambda route: route.continue_())
         try:
             await context.set_permission(permission, 'denied')
         except:
-            # Algumas permissões podem não ser suportadas, então ignoramos erros
+            # Some permissions may not be supported, so we ignore errors
             pass
     
     return context 

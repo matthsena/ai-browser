@@ -1,86 +1,86 @@
-# AI Browser HTML to Markdown Converter
+# 🌐 AI Browser - Interactive Elements Extractor
 
-Este projeto é uma ferramenta para capturar páginas web, destacar elementos interativos e converter o conteúdo para Markdown.
+This project is a tool to capture web pages, highlight interactive elements, and extract them to a structured JSON format.
 
-## Funcionalidades
+## ✨ Features
 
-- Captura de páginas web usando Playwright
-- Destaque de elementos interativos (links, botões, campos de formulário, etc.)
-- Extração e incorporação de conteúdo de iframes
-- Conversão automática do HTML para Markdown
+- 🔍 Captures web pages using Playwright
+- 🎯 Highlights interactive elements (links, buttons, form fields, etc.)
+- 📦 Extracts content from iframes
+- 💾 Saves interactive elements data in structured JSON format
+- 🚫 Automatically handles permission dialogs and popups
 
-## Requisitos
+## 📋 Requirements
 
 - Python 3.7+
 - Playwright
-- Markdownify
+- JSON handling capabilities
 
-## Instalação
+## 🛠️ Installation
 
-1. Clone o repositório:
+1. Clone the repository:
 ```bash
-git clone https://github.com/seu-usuario/ai-browser.git
+git clone https://github.com/your-username/ai-browser.git
 cd ai-browser
 ```
 
-2. Crie e ative um ambiente virtual:
+2. Create and activate a virtual environment:
 ```bash
 python -m venv .venv
 source .venv/bin/activate  # Linux/Mac
-# ou
+# or
 .venv\Scripts\activate  # Windows
 ```
 
-3. Instale as dependências:
+3. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-4. Instale os navegadores do Playwright:
+4. Install Playwright browsers:
 ```bash
 playwright install
 ```
 
-## Uso
+## 🚀 Usage
 
-Execute o script principal fornecendo a URL da página a ser processada:
+Run the main script providing the URL of the page to be processed:
 
 ```bash
-python html_to_markdown.py https://exemplo.com
+python main.py https://example.com
 ```
 
-### Opções adicionais
+### ⚙️ Additional Options
 
 ```
---timeout TIMEOUT     Timeout em ms (default: 60000)
+--timeout TIMEOUT     Timeout in ms (default: 60000)
 --wait {load,domcontentloaded,networkidle,commit}
-                      Evento para aguardar (default: domcontentloaded)
---output-html PATH    Caminho para salvar o arquivo HTML consolidado
---output-md PATH      Caminho para salvar o arquivo Markdown
+                      Event to wait for (default: load)
+--output-json PATH    Path to save the interactive elements JSON file
 ```
 
-## Estrutura do Projeto
+## 📁 Project Structure
 
-- `html_to_markdown.py`: Script principal
-- `browser_config.py`: Configurações do navegador
-- `page_processor.py`: Funções para processamento de páginas
-- `html_processor.py`: Funções para processamento de HTML
-- `static/highlight_script.js`: Script JavaScript para destacar elementos interativos
-- `requirements.txt`: Dependências do projeto
+- `main.py`: Main script
+- `browser_config.py`: Browser configurations
+- `page_processor.py`: Page processing functions
+- `html_processor.py`: HTML processing functions
+- `static/highlight_script.js`: JavaScript script to highlight interactive elements
+- `requirements.txt`: Project dependencies
 
-## Como Funciona
+## 🔄 How It Works
 
-1. O script abre a URL especificada em um navegador Chromium usando Playwright
-2. Rola a página para carregar todo o conteúdo
-3. Destaca elementos interativos com bordas vermelhas e rótulos numéricos
-4. Extrai o conteúdo de iframes e o incorpora no HTML principal
-5. Salva o HTML consolidado
-6. Converte o HTML para Markdown e salva o resultado
+1. The script opens the specified URL in a Chromium browser using Playwright
+2. Scrolls the page to load all content
+3. Highlights interactive elements with red borders and numeric labels
+4. Extracts content from iframes
+5. Identifies and analyzes all interactive elements on the page
+6. Saves structured JSON data with information about all interactive elements
 
-## Personalização
+## 🎛️ Customization
 
-Você pode personalizar o comportamento do script modificando a classe `ScraperConfig` em `html_to_markdown.py`.
+You can customize the behavior of the script by modifying the `ScraperConfig` class in `main.py`.
 
-## Licença
+## 📜 License
 
 MIT 
